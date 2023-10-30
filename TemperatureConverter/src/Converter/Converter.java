@@ -7,6 +7,10 @@ public class Converter {
         return (5/9.0)*(temperature-32);
     }
 
+    public static double CelsiusToKelvin(double temperature){
+        return temperature + 273.15;
+    }
+
 
 
 }
