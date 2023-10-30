@@ -25,4 +25,11 @@ class TestConverter {
         double conversion = Converter.CelsiusToKelvin(temperature);
         assertEquals(293.15, conversion);
     }
-}
+
+    @Test
+    void kelvinToCelsius() {
+            double temperature = 293.15;
+            double conversion = Converter.KelvinToCelsius(temperature);
+            assertEquals(20, conversion);
+        }
+    }
