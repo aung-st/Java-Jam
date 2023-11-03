@@ -1,7 +1,10 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class scraper {
         public static Document getHTML (String url) throws IOException {
@@ -17,8 +20,22 @@ public class scraper {
             return document;
         }
 
+        public static ArrayList<String> getHeaders(Document document){
+            Elements elements = document.select("div.blog-header a h2");
+
+            ArrayList<String> blogHeadings = new ArrayList<>();
+
+            for (Element element:elements) {
+                blogHeadings.add("Heading: " + element.text());
+            }
+            return blogHeadings;
+        }
+
         public static void main(String[] args) throws IOException {
             Document scrape = getHTML("https://www.scrapingdog.com/blog/");
-            System.out.print(scrape);
+            ArrayList<String> headings = getHeaders(scrape);
+            for (String s : headings) {
+                System.out.println(s);
+            }
         }
 }
