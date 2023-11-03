@@ -21,7 +21,7 @@ public class scraper {
         }
 
         public static ArrayList<String> getHeaders(Document document){
-            Elements elements = document.select("div.blog-header a h2");
+            Elements elements = document.select("div.blog-header a h1, h2, h3, h4, h5, h6");
 
             ArrayList<String> blogHeadings = new ArrayList<>();
 
@@ -35,12 +35,16 @@ public class scraper {
             return document.select("a");
         }
 
+
+
         public static void main(String[] args) throws IOException {
-            Document scrape = getHTML("https://spring.io/blog");
+            Document scrape = getHTML("https://en.wikipedia.org/wiki/Prime_number");
             ArrayList<String> headings = getHeaders(scrape);
             for (String s : headings) {
                 System.out.println(s);
             }
-            System.out.println(getLinks(scrape));
+            //System.out.println(getLinks(scrape));
         }
+
+
 }
