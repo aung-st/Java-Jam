@@ -3,8 +3,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Scraper {
         // fetch webpage
@@ -20,11 +20,11 @@ public class Scraper {
             return document;
         }
 
-        public static ArrayList<String> getHeaders(Document document){
+        public static List<String> getHeaders(Document document){
             // get all headers
             Elements elements = document.select("div.blog-header a h1, h2, h3, h4, h5, h6");
 
-            ArrayList<String> blogHeadings = new ArrayList<>();
+            List<String> blogHeadings = new ArrayList<>();
 
             for (Element element:elements) {
                 blogHeadings.add(element.text());
@@ -42,7 +42,7 @@ public class Scraper {
 
         public static void main(String[] args) throws IOException {
             Document scrape = getHTML("https://en.wikipedia.org/wiki/Prime_number");
-            ArrayList<String> headings = getHeaders(scrape);
+            List<String> headings = getHeaders(scrape);
             for (String s : headings) {
                 System.out.println(s);
             }
