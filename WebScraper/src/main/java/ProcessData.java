@@ -17,17 +17,23 @@ public class ProcessData {
         return new FileWriter(file);
     }
 
+    public static void writeToFile(FileWriter file, List<String> content) throws IOException {
+        try {
+            for (String line : content) {
+                file.write(line + "\n");
+            }
+        } catch (IOException e){
+            System.out.println("Something went wrong...");
+        }
+    }
+
     public static void main(String[] args) throws IOException {
           FileWriter file = makeFile("links");
-//        Document scrape = Scraper.getHTML("https://en.wikipedia.org/wiki/Prime_number");
-//        List<String> headings = Scraper.getHeaders(scrape);
-//        for (String s : headings) {
-//            System.out.println(s);
-//        }
-//
-//        List<String> links = Scraper.getLinks(scrape);
-//        for (String l: links) {
-//            System.out.println(l);
-//        }
+
+          Document scrape = Scraper.getHTML("https://en.wikipedia.org/wiki/Prime_number");
+
+          List<String> links = Scraper.getLinks(scrape);
+
+          writeToFile(file,links);
     }
 }
