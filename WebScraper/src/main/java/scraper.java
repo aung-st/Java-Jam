@@ -31,11 +31,16 @@ public class scraper {
             return blogHeadings;
         }
 
+        public static Elements getLinks(Document document){
+            return document.select("a");
+        }
+
         public static void main(String[] args) throws IOException {
-            Document scrape = getHTML("https://www.scrapingdog.com/blog/");
+            Document scrape = getHTML("https://spring.io/blog");
             ArrayList<String> headings = getHeaders(scrape);
             for (String s : headings) {
                 System.out.println(s);
             }
+            System.out.println(getLinks(scrape));
         }
 }
