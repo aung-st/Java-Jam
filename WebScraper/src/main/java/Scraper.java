@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Scraper {
+        // fetch webpage
         public static Document getHTML (String url) throws IOException {
             Document document = Jsoup.connect(url).userAgent("Mozilla/5.0 (" +
                     "Windows NT 10.0; Win64; x64) " +
@@ -20,6 +21,7 @@ public class Scraper {
         }
 
         public static ArrayList<String> getHeaders(Document document){
+            // get all headers
             Elements elements = document.select("div.blog-header a h1, h2, h3, h4, h5, h6");
 
             ArrayList<String> blogHeadings = new ArrayList<>();
@@ -31,6 +33,7 @@ public class Scraper {
         }
 
         public static List<String> getLinks(Document document){
+            // get all absolute links
             Elements links = document.select("a");
             return links.eachAttr("abs:href");
         }
