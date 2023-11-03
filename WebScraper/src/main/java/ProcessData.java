@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class ProcessData {
     public static FileWriter makeFile(String name) throws IOException {
-        File file = new File(name + ".csv");
+        File file = new File("data/"+name + ".csv");
         try {
             return new FileWriter(file);
         }catch (IOException e){
@@ -18,7 +18,7 @@ public class ProcessData {
     }
 
     public static void main(String[] args) throws IOException {
-          FileWriter file = makeFile("data/links");
+          FileWriter file = makeFile("links");
 //        Document scrape = Scraper.getHTML("https://en.wikipedia.org/wiki/Prime_number");
 //        List<String> headings = Scraper.getHeaders(scrape);
 //        for (String s : headings) {
