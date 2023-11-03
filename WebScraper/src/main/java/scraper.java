@@ -4,6 +4,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class scraper {
         public static Document getHTML (String url) throws IOException {
@@ -30,8 +31,9 @@ public class scraper {
             return blogHeadings;
         }
 
-        public static Elements getLinks(Document document){
-            return document.select("a");
+        public static List<String> getLinks(Document document){
+            Elements links = document.select("a");
+            return links.eachAttr("abs:href");
         }
 
 
@@ -39,10 +41,14 @@ public class scraper {
         public static void main(String[] args) throws IOException {
             Document scrape = getHTML("https://en.wikipedia.org/wiki/Prime_number");
             ArrayList<String> headings = getHeaders(scrape);
-            for (String s : headings) {
-                System.out.println(s);
+//            for (String s : headings) {
+//                System.out.println(s);
+//            }
+
+            List<String> links = getLinks(scrape);
+            for (String l: links) {
+                System.out.println(l);
             }
-            //System.out.println(getLinks(scrape));
         }
 
 
