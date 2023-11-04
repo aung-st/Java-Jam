@@ -18,15 +18,8 @@ public class ProcessData {
         return new FileWriter(file);
     }
 
-    public static void writeToFile(FileWriter file, Set<String> content) throws IOException {
-        // write content line by line into selected csv file
-        for (String line : content) {
-            System.out.println(line);
-            file.write(line + "\n");
-        }
-    }
-
     public static void writeToFile(FileWriter file, JSONObject raw_json) throws IOException{
+        // write to data/ as a json file
         Gson gson = new Gson();
         gson.toJson(raw_json, file);
         file.close();
