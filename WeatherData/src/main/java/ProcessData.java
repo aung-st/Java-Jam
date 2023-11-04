@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ProcessData {
     public static FileWriter makeFile(String name) throws IOException {
-        // create a file in the data directory in WeatherData as a csv
+        // create a file in the data directory in WeatherData as a json
         File file = new File("data/" + name + ".json");
         try {
             return new FileWriter(file);
@@ -19,7 +19,7 @@ public class ProcessData {
     }
 
     public static void writeToFile(FileWriter file, JSONObject raw_json) throws IOException{
-        // write to data/ as a json file
+        // write json content to file
         Gson gson = new Gson();
         gson.toJson(raw_json, file);
         file.close();
