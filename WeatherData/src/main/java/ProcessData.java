@@ -9,7 +9,7 @@ import java.util.Set;
 public class ProcessData {
     public static FileWriter makeFile(String name) throws IOException {
         // create a file in the data directory in WeatherData as a json
-        File file = new File("data/" + name + ".json");
+        File file = new File("data/" +"airQualityData"+ name + ".json");
         try {
             return new FileWriter(file);
         } catch (IOException e) {
