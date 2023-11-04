@@ -7,11 +7,11 @@ import org.json.JSONObject;
 
 public class APICall {
     final static String key = System.getenv("APIKEY");
-    public static JSONObject call() throws IOException, InterruptedException {
+    public static JSONObject call(String name) throws IOException, InterruptedException {
 
-        // get air quality data on London as json response data
+        // get air quality data on city name parameter as json response data
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?city=London"))
+                .uri(URI.create("https://air-quality-by-api-ninjas.p.rapidapi.com/v1/airquality?city="+name))
                 .header("X-RapidAPI-Key", key)
                 .header("X-RapidAPI-Host", "air-quality-by-api-ninjas.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
