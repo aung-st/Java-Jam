@@ -7,7 +7,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // fetch page
         Document scrape = Scraper.getHTML("https://en.wikipedia.org/wiki/Prime_number");
-
         // create file to store links
         FileWriter fileLinks = ProcessData.makeFile("links");
         List<String> links = Scraper.getLinks(scrape);
