@@ -26,7 +26,7 @@ public class ProcessData {
     }
 
     public static void writeHeaders(FileWriter file) throws IOException {
-        String[] headers = {"NO2","O3","SO2","PM2.5","overall_aqi","PM10","CO"};
+        String[] headers = {"NO2","O3","SO2","PM2.5","PM10","CO","overall_aqi"};
         System.out.println(Arrays.toString(headers));
         file.write(Arrays.toString(headers).replaceAll("]","").replaceAll("\\[",""));
         file.close();
@@ -34,6 +34,13 @@ public class ProcessData {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         JSONObject response = APICall.call();
+        System.out.println(response.get("NO2"));
+        System.out.println(response.get("O3"));
+        System.out.println(response.get("SO2"));
+        System.out.println(response.get("PM2.5"));
+        System.out.println(response.get("PM10"));
+        System.out.println(response.get("CO"));
+        System.out.println(response.get("overall_aqi"));
 
         FileWriter airQualityData = ProcessData.makeFile("airQualityData");
         writeHeaders(airQualityData);
